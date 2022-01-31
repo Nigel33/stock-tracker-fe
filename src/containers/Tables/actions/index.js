@@ -83,8 +83,7 @@ const HOC = ( WrappedComponent ) => {
       this.setState({
         showReservation: true, 
         availableChairs: payload, 
-      })
-      console.log(payload)
+      })      
     }
     checkAvailableTablesError = error => {
       console.log(error)

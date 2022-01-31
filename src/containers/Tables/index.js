@@ -27,7 +27,7 @@ class Tables extends Component {
       <>
         <Container>
           <Row>
-            <Col md={ 7 }>
+            <Col md={ 8 }>
               <h1 className="mb-3">Table modules</h1>
               <div className="mb-3">
                 <Button 
@@ -75,10 +75,7 @@ class Tables extends Component {
                     }
                   }
                 ]}/>
-            </Col>
-            <Col md={ 5 }>
-              <Queues />
-            </Col>
+            </Col>            
           </Row>
         </Container>          
         <Create { ...this.props }/>

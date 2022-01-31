@@ -9,14 +9,11 @@ import ReactTable from 'react-table'
 
 const Reservation = ({  
   onChangeTablesHOC,  
-  showReservation,
-  onChangeChairsHOC,
-  newChairs,
-  selectedTable,
-  createChairs,
+  showReservation,  
   chairReservation,
   availableChairs,
   createReservation,
+  customerCount
 }) => {
   const onChangeTableData = ( key, val ) => {
     let tmp = _.cloneDeep( chairReservation )
@@ -31,7 +28,15 @@ const Reservation = ({
         closeButton>
         <Modal.Title>Make Reservations</Modal.Title>
       </Modal.Header>
-      <Modal.Body>
+      <Modal.Body>        
+        {
+          (chairReservation.customerCount > availableChairs.length) && (
+            <p style={{ color: 'red' }}>
+              We dont have that many seats available unfortunately. 
+              {chairReservation.customerCount - availableChairs.length} queue entries will be generated instead
+            </p>
+          )
+        }
         <Form>
           <Form.Group className="mb-3" controlId="customerCount">
             <Form.Label>How many seats would you like to reserve</Form.Label>

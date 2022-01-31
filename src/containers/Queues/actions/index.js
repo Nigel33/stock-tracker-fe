@@ -24,12 +24,35 @@ const HOC = ( WrappedComponent ) => {
     getIncompleteQueuesSuccess = payload => this.setState({ queues: payload })
     getIncompleteQueuesError = error => console.log( error )
 
+    clearQueues = (data) => {      
+      Post(
+        '/api/queues/clear_queues',
+        data,
+        this.clearQueuesSuccess,
+        this.clearQueuesError,
+        this.load
+      )      
+    }
+    clearQueuesSuccess = payload => {      
+      this.props.onChangeTablesHOC( 'showReservation', false )
+      this.getIncompleteQueues()
+      // this.setState({ 
+      //   showReservation: false, 
+      //   showPromptModal: true,
+      //   reservationResult: payload,
+      // })      
+    }
+    createReclearQueuesErrorservationError = error => {
+      console.log(error)
+    }
+
   
     render = () => {
       return (
         <>
           <WrappedComponent
             { ...this.props }
+            clearQueues={ this.clearQueues }
             getIncompleteQueues={ this.getIncompleteQueues } 
             queues={ this.state.queues } />          
         </>

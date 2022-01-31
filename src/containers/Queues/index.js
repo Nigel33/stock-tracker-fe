@@ -2,9 +2,11 @@ import React, { Component } from 'react'
 import { compose } from 'redux'
 
 // import WithTables from './actions'
-import WithQueues from './actions/'
+import WithQueues from './actions'
+import WithTables from 'containers/Tables/actions'
 import ReactTable from 'react-table'
 
+import Reservation from './Reservation'
 
 import {
   Container,
@@ -32,7 +34,7 @@ class Queues extends Component {
                     this.props.checkAvailableTables()
                   }}>
                   Place Queue in Chairs
-                </Button> */}
+                </Button> 
               </div>
               <ReactTable 
                 data={ this.props.queues }
@@ -44,12 +46,14 @@ class Queues extends Component {
                 ]}/>
             </Col>
           </Row>
-        </Container>               
+        </Container>   
+        <Reservation {...this.props} />            
       </>
     )
   }
 }
 
 export default compose(
+  WithTables,
   WithQueues,
 )( Queues )

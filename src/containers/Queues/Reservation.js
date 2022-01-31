@@ -9,19 +9,22 @@ import ReactTable from 'react-table'
 
 const Reservation = ({  
   onChangeTablesHOC,  
-  showReservation,
-  onChangeChairsHOC,
-  newChairs,
-  selectedTable,
-  createChairs,
+  showReservation,  
+  queues,
   chairReservation,
-  availableChairs,
-  createReservation,
+  availableChairs,  
+  clearQueues,
 }) => {
   const onChangeTableData = ( key, val ) => {
     let tmp = _.cloneDeep( chairReservation )
     tmp[ key ] = val
     return onChangeTablesHOC( 'chairReservation', tmp )
+  }
+
+  const handleCount = (availableChairs, queues) => {
+    let difference = availableChairs.length - queues.length 
+    if (difference > 0) return queues.length  
+    return 0
   }
 
   return (  
@@ -53,14 +56,16 @@ const Reservation = ({
           }          
         ]}/>
       </Modal.Body>
-      <Modal.Footer>        
+      <Modal.Footer>   
+        <div>You will be placing { handleCount(availableChairs, queues) } queue on these available { availableChairs.length } chairs</div>     
         <Button variant="primary" 
           onClick={() => {
-            // let tmp = _.cloneDeep( chairReservation )    
-            // tmp.chairs = availableChairs                         
-            // createReservation( tmp )
+            const tmp = {
+              chairs: availableChairs
+            }                                      
+            clearQueues( tmp )
           }}>
-          Place Queue in Available Seats
+          Confirm
         </Button> 
       </Modal.Footer>
     </Modal>
