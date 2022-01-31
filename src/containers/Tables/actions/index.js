@@ -1,5 +1,7 @@
+import { get } from 'lodash'
 import React, { Component } from 'react'
-// import { toast } from 'react-toastify'
+import PromptModal from 'components/Indicator/Prompt'
+import ReservationResult  from '../components/ReservationResult'
 
 import { Get, Put, Post, Delete } from 'utils/axios'
 
@@ -9,7 +11,15 @@ const HOC = ( WrappedComponent ) => {
     state = {
       loading: false,
       tables: [],
-      
+      newTables: {},        
+      selectedTable: {},
+      chairReservation: {},
+      showCreateTable: false,
+      showReservation: false,
+      availableChairs: [],
+      reservationResult: [],
+      showPromptModal: false,
+      selectedChairsToCheckout: [],
     }
 
     load = param => this.setState({ loading: param })
@@ -24,38 +34,36 @@ const HOC = ( WrappedComponent ) => {
       this.getTablesError,
       this.load
     )
-    getTablesSuccess = payload => this.setState({ Tables: payload })
-    getTablesError = error => this.requestError( error )
+    getTablesSuccess = payload => this.setState({ tables: payload })
+    getTablesError = error => console.log( error )
 
     getSelectedTable = id => Get(
-      `/api/Tables/${ id }`,
+      `/api/tables/${ id }`,
       this.getSelectedTableSuccess,
       this.getSelectedTableError,
       this.load
     )
     getSelectedTableSuccess = payload => this.setState({ selectedTable: {
-      ...payload,
-      dob: payload.dob ? payload.dob : ''
+      ...payload,      
     }, showUpdateTable: true })
     getSelectedTableError = error => this.requestError( error )
 
-    createTable = data => Post(
-      `/api/Tables`,
+    createTables = data => Post(
+      `/api/tables/by_quantity`,
       data,
-      this.createTableSuccess,
-      this.createTableError,
+      this.createTablesSuccess,
+      this.createTablesError,
       this.load
     )    
-    createTableSuccess = payload => {
-      this.requestSuccess( 'Table is created successfully.' )
+    createTablesSuccess = payload => {
+      // this.requestSuccess( 'Table is created successfully.' )
       this.setState({ 
         showCreateTable: false,
-        newTable: {},
-        TableError: {}, 
+        newTable: {},         
       })
       this.getTables()
     }
-    createTableError = error => {
+    createTablesError = error => {
       if( typeof( error ) === 'string' ) {
         this.requestError( error )
       } else {
@@ -63,18 +71,96 @@ const HOC = ( WrappedComponent ) => {
       }
     }
 
+    checkAvailableTables = () => {
+      Get(
+        '/api/tables/check_available_tables',
+        this.checkAvailableTablesSuccess,
+        this.checkAvailableTablesError,
+        this.load,
+      )
+    }
+    checkAvailableTablesSuccess = payload => {
+      this.setState({
+        showReservation: true, 
+        availableChairs: payload, 
+      })
+      console.log(payload)
+    }
+    checkAvailableTablesError = error => {
+      console.log(error)
+    }
+
+    createReservation = (data) => {      
+      Post(
+        '/api/chairs/reserve',
+        data,
+        this.createReservationSuccess,
+        this.createReservationError,
+        this.load
+      )      
+    }
+    createReservationSuccess = payload => {
+      console.log(payload)
+      this.setState({ 
+        showReservation: false, 
+        showPromptModal: true,
+        reservationResult: payload,
+      })      
+    }
+    createReservationError = error => {
+      console.log(error)
+    }
+
+    checkoutChairs = data => {
+      Post(
+        '/api/chairs/checkout',
+        data,
+        this.checkoutChairsSuccess,
+        this.checkoutChairsError,
+        this.load
+      )
+    }
+    checkoutChairsSuccess = () => {
+      this.getSelectedTable( this.state.selectedTable._id )
+      this.getTables()
+    }
+    checkoutChairsError = (error) => {
+      console.log(error)
+    }
+
+
     render = () => {
       return (
         <>
           <WrappedComponent
             { ...this.props }
+            checkoutChairs={ this.checkoutChairs }
+            selectedChairsToCheckout={ this.state.selectedChairsToCheckout }
+            chairReservation={ this.state.chairReservation }
+            createReservation={ this.createReservation }
+            availableChairs={ this.state.availableChairs }
+            showReservation={ this.state.showReservation }
+            checkAvailableTables={ this.checkAvailableTables }
+            getSelectedTable={ this.getSelectedTable }
+            selectedTable={ this.state.selectedTable }
+            newTables={ this.state.newTables }
             getTables={ this.getTables}
-            tables={ this.state.tables } />
-          {/* <PromptModal
+            onChangeTablesHOC={ this.onChangeTablesHOC}
+            showUpdateTable={ this.state.showUpdateTable }
+            showCreateTable={ this.state.showCreateTable }
+            tables={ this.state.tables }
+            createTables={ this.createTables } />
+          <PromptModal
             showPromptModal={ this.state.showPromptModal }
-            onClickYes={() => this.removeTable( this.state.toRemoveID )}
-            onClickNo={() => this.setState({ showPromptModal: false })}
-            content={ 'Are you sure you want to delete the record?' } /> */}
+            onClickYes={() => {
+              this.setState({ showPromptModal: false }, () => {
+                this.getTables()
+              })              
+            }}
+            content={ 
+              <ReservationResult 
+                result={ this.state.reservationResult }/> 
+            }/> 
         </>
       )
     }

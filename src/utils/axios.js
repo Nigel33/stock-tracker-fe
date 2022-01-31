@@ -48,7 +48,7 @@ export const Post = ( url, data, response, error, load ) => {
       } else {
         error( err.response.data )
       }
-    } else if( err ) {
+    } else if( err ) {      
       error( err.response.data )
     } else {
       error( 'Uh oh, something went wrong. Please contact your friendly neighbourhood developers for assistance' )
