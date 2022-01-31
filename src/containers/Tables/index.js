@@ -1,6 +1,12 @@
 import React, { Component } from 'react'
 
+import WithTables from './actions'
+
 class Tables extends Component {
+  componentDidMount = () => {
+    this.props.getTables()
+  }
+  
   render() {
     return (
       <>
@@ -10,4 +16,4 @@ class Tables extends Component {
   }
 }
 
-export default Tables
+export default WithTables( Tables )
