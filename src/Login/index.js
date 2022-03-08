@@ -19,10 +19,8 @@ const Login = props => {
   const handleLogin = async payload => {
     try {
       let response = await loginUser(dispatch, payload) 
-      if (!response.user) return
-      console.log('successs!')
-      console.log(props)
-      // 
+      if (!response.user) return      
+      props.history.push("/") 
   } catch (error) {
       console.log(error)
   }
