@@ -1,6 +1,7 @@
 import Ingredients from 'containers/Ingredients'
 import Outlets from 'containers/Outlets'
-import Login from '../Login'
+import Login from '../containers/Login'
+import Logout from '../containers/Logout'
 import Main from 'containers/Main'
 
 import { ADMIN, MANAGER, EMPLOYEE } from './roles'
@@ -19,6 +20,11 @@ const routes =[
   {
     path:'/login',
     component: Login,  
+    availableTo: [],  
+  },
+  {
+    path:'/logout',
+    component: Logout,  
     availableTo: [],  
   },
   {  

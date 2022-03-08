@@ -6,12 +6,10 @@ import { useAuthState } from 'Context'
 const AppRoutes = ({ component: Component, path, availableTo, ...rest }) => { 
   const user = useAuthState()
   console.log("Im user", user)
-  console.log(availableTo)
-  
 
-  const isUserValid = (availableTo, user) => {
+  const isUserValid = (availableTo, user) => {    
     if (!user) return false
-    if (availableTo.length === 0) return true      
+    if (availableTo.length === 0) return true         
     if (availableTo.includes(user.userDetails.userType)) return true    
 
     return false;
@@ -22,7 +20,13 @@ const AppRoutes = ({ component: Component, path, availableTo, ...rest }) => {
       path={path}
       render={props =>
         isUserValid(availableTo, user) ? (
-          <Component {...props} />          
+          <>
+            {
+              console.log("Im logged out")
+            }
+            <Component {...props} />     
+          </>
+               
         ) : 
         (
           <Redirect

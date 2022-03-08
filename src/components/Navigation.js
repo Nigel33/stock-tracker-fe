@@ -51,9 +51,15 @@ const Navigation = ({
             }
             { 
               user && (
-                <Nav className="ml-auto">
-                  <Nav.Link style={{ color: "white" }} href="logout">LOGOUT</Nav.Link>
-                </Nav>
+                <>
+                  <div style={{ color: "white" }}>
+                    { user.userDetails.username } - { user.userDetails.userType }
+                  </div>
+                  <Nav className="ml-auto">
+                    <Nav.Link style={{ color: "white" }} href="logout">LOGOUT</Nav.Link>
+                  </Nav>
+                </>
+                
               )
             }                                    
           </Container>

@@ -25,8 +25,7 @@ const Home = (props) => {
             />
           ))
         }
-      </Switch>
-             
+      </Switch>             
     </div> 
   )
   

@@ -27,6 +27,7 @@ export async function loginUser(dispatch, loginPayload) {
 }
  
 export async function logout(dispatch) {
+  console.log("hey ho")
   dispatch({ type: 'LOGOUT' });
   localStorage.removeItem('currentUser');
   localStorage.removeItem('token');
