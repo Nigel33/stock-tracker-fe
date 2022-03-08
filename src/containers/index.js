@@ -1,35 +1,32 @@
 import React, { useEffect } from 'react'
-import Ingredients from './Ingredients'
-import Outlets from './Outlets'
 import Navbar from 'components/Navigation.js'
-import Login from '../Login'
+
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom'
 import { useAuthState } from 'Context'
 import _ from 'lodash'
+import routes from 'Config/routes'
+import AppRoute from 'components/AppRoutes';
 
 const Home = (props) => {
-  const userDetails = useAuthState()
-  const user = "admin"
-  
-  useEffect(() => {
-    console.log("checking")
-    console.log
-    
-    if (_.isEmpty(userDetails)) {
-      props.history.push("/login")
-    }    
-  }, [userDetails]); 
+  const user = useAuthState() 
   
   return (    
     <div className="App">            
       <Navbar 
         user={ user }/>
-      <Switch >     
-        <Route path="/login" component={ Login  } initialPath/>      
-        <Route path="/outlets" component={ Outlets }/>  
-        <Route path="/ingredients" component={ Ingredients }/>  
-        <Route path="/" component={ Ingredients  }/>     
-      </Switch>       
+      <Switch>
+        {
+          routes.map((route) => (
+            <AppRoute
+              key={route.path}
+              path={route.path}
+              component={route.component}
+              availableTo={route.availableTo}
+            />
+          ))
+        }
+      </Switch>
+             
     </div> 
   )
   

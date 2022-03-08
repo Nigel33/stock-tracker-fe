@@ -11,8 +11,7 @@ function App() {
       <Router>
         <Switch >     
           <Home />
-        </Switch> 
-               
+        </Switch>                
       </Router>
     </AuthProvider>        
   );
