@@ -1,13 +1,22 @@
 import Axios from 'axios'
 import getDomainURL from 'utils/api'
+// import { useAuthState } from 'Context'
+
 
 
 export const Get = ( url, response, error, load ) => {
+  // const user = useAuthState() 
   load( true )  
-  Axios.defaults.headers = {
-    'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin' : '*',    
-  }  
+  // Axios.defaults.headers = {
+  //   common : {
+  //     Authorization: `Bearer ${ "fdffdffffd" }`
+  //   },
+  //   'Access-Control-Allow-Origin': '*'
+  // }
+  // Axios.defaults.headers = {
+  //   'Content-Type': 'application/json',
+  //   'Access-Control-Allow-Origin' : '*',    
+  // }  
   return Axios.get( `${ getDomainURL() }${ url }` ).then( res => {
     response( res.data )
     load( false )

@@ -15,8 +15,8 @@ const HOC = ( WrappedComponent ) => {
 
     load = param => this.setState({ loading: param })
     
-    onChangeOutletsHOC = ( key, val ) => this.setState({ [ key ]: val })
-
+    onChangeOutletsHOC = ( key, val ) =>  this.setState({ [ key ]: val })  
+     
     getOutlets = () => Get(
       '/api/outlets',
       this.getOutletsSuccess,

@@ -15,16 +15,16 @@ import {
 
 class Ingredients extends Component {
   componentDidMount = () => {
-    this.props.getOutlets()  
-  }
+    this.props.getOutlets()      
+  } 
   
   render() {
     return (
       <>
         <Container>
-          <Row>
+          <Row>            
             <Col md={ 8 }>
-              <h1 className="mb-3">Outlets</h1>                          
+              <h1 className="mb-3">Outlets</h1>                              
               <ReactTable 
                 data={ this.props.outlets }
                 columns={[

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import Navbar from 'components/Navigation.js'
+import axios from 'axios'
 
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom'
 import { useAuthState } from 'Context'
@@ -9,6 +10,11 @@ import AppRoute from 'components/AppRoutes';
 
 const Home = (props) => {
   const user = useAuthState() 
+  useEffect(() => {
+    console.log('setting defailt')
+    axios.defaults.headers.common['Authorization'] = "apple";
+  }, [])
+  
   
   return (    
     <div className="App">            
@@ -18,10 +24,11 @@ const Home = (props) => {
         {
           routes.map((route) => (
             <AppRoute
-              key={route.path}
-              path={route.path}
-              component={route.component}
-              availableTo={route.availableTo}
+              user={ user }
+              key={ route.path }
+              path={ route.path }
+              component={ route.component }
+              availableTo={ route.availableTo }
             />
           ))
         }

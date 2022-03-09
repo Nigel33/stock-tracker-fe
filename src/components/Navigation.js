@@ -52,7 +52,7 @@ const Navigation = ({
             { 
               user && (
                 <>
-                  <div style={{ color: "white" }}>
+                  <div style={{ color: "white" }}>                    
                     { user.userDetails.username } - { user.userDetails.userType }
                   </div>
                   <Nav className="ml-auto">
