@@ -19,7 +19,7 @@ const navigation = ({
               !user.userDetails && (
                 <>
                   <Nav className="me-auto">
-                    <Nav.Link style={{ color: "white" }} href="login">LOGIN</Nav.Link>
+                    <Nav.Link style={{ color: "white" }} href="#/login">LOGIN</Nav.Link>
                   </Nav>
                 </>
               )
@@ -30,9 +30,9 @@ const navigation = ({
                   <Navbar.Toggle aria-controls="basic-navbar-nav" />
                   <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                      <Nav.Link style={{ color: "white" }} href="ingredients">Ingredients</Nav.Link>
-                      <Nav.Link style={{ color: "white" }} href="outlets">Outlets</Nav.Link>      
-                      <Nav.Link style={{ color: "white" }} href="users">Users</Nav.Link>                  
+                      <Nav.Link style={{ color: "white" }} href="#/ingredients">Ingredients</Nav.Link>
+                      <Nav.Link style={{ color: "white" }} href="#/outlets">Outlets</Nav.Link>      
+                      <Nav.Link style={{ color: "white" }} href="#/users">Users</Nav.Link>                  
                     </Nav>
                   </Navbar.Collapse>
                 </>
@@ -44,7 +44,7 @@ const navigation = ({
                   <Navbar.Toggle aria-controls="basic-navbar-nav" />
                   <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">                      
-                      <Nav.Link style={{ color: "white" }} href="outlets">Outlets</Nav.Link>                   
+                      <Nav.Link style={{ color: "white" }} href="#/outlets">Outlets</Nav.Link>                   
                     </Nav>
                   </Navbar.Collapse>
                 </>
@@ -57,7 +57,7 @@ const navigation = ({
                     { user.userDetails.username } - { user.userDetails.userType }
                   </div>
                   <Nav className="ml-auto">
-                    <Nav.Link style={{ color: "white" }} href="logout">LOGOUT</Nav.Link>
+                    <Nav.Link style={{ color: "white" }} href="#/logout">LOGOUT</Nav.Link>
                   </Nav>
                 </>
                 
