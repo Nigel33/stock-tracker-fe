@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import './index.css';
-import { AuthProvider } from "./Context";
+import { AuthProvider } from "./context";
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom'
 import Home from './containers'
 

@@ -7,7 +7,7 @@ import {
 import _ from 'lodash'
 import ReactTable from 'react-table'
 import Amend from './amend'
-import { EMPLOYEE } from 'Config/roles'
+import { EMPLOYEE } from 'config/roles'
 
 const Update = ({
   userDetails,

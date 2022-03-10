@@ -7,7 +7,7 @@ import {
   Row,
 } from 'react-bootstrap'
 
-import { logout, useAuthDispatch } from 'Context'
+import { logout, useAuthDispatch } from 'context'
 
 const Logout = props => {
   const dispatch = useAuthDispatch() 

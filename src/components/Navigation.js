@@ -5,7 +5,7 @@ import {
   Nav,
   NavDropdown,
 } from 'react-bootstrap'
-import { ADMIN, MANAGER, EMPLOYEE } from 'Config/roles'
+import { ADMIN, MANAGER, EMPLOYEE } from 'config/roles'
 
 const navigation = ({
   user,

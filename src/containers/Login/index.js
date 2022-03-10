@@ -8,7 +8,7 @@ import {
   Row,
 } from 'react-bootstrap'
 import { Post } from 'utils/axios'
-import { loginUser, useAuthState, useAuthDispatch } from 'Context'
+import { loginUser, useAuthState, useAuthDispatch } from 'context'
 
 const Login = props => {
   const dispatch = useAuthDispatch() 
