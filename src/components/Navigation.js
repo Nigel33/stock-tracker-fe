@@ -7,7 +7,7 @@ import {
 } from 'react-bootstrap'
 import { ADMIN, MANAGER, EMPLOYEE } from 'Config/roles'
 
-const Navigation = ({
+const navigation = ({
   user,
 }) => {
   return (
@@ -70,4 +70,4 @@ const Navigation = ({
   )
 }
 
-export default Navigation
+export default navigation
