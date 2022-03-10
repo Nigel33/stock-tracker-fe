@@ -1,12 +1,12 @@
 import React from 'react'
-import Navbar from 'components/Navigation.js'
+import Navbar from 'components/navigation.js'
 import axios from 'axios'
 
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom'
 import { useAuthState } from 'Context'
 import _ from 'lodash'
 import routes from 'Config/routes'
-import AppRoute from 'components/AppRoutes';
+import AppRoute from 'components/appRoutes';
 
 const Home = (props) => {
   const user = useAuthState() 

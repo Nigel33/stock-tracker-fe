@@ -5,8 +5,8 @@ import WithIngredients from './actions'
 import WithOutletsDictionary from 'actions/dictionary/outletsDictionary'
 import ReactTable from 'react-table'
 
-import View from './View'
-import Create from './Create'
+import View from './view'
+import Create from './create'
 // import Create from './Create'
 
 import {

@@ -5,7 +5,7 @@ import WithUsers from './actions'
 import ReactTable from 'react-table'
 import WithOutletsDictionary from 'actions/dictionary/outletsDictionary'
 
-import Create from './Create'
+import Create from './create'
 
 import {
   Container,

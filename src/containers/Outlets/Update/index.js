@@ -6,7 +6,7 @@ import {
 } from 'react-bootstrap'
 import _ from 'lodash'
 import ReactTable from 'react-table'
-import Amend from './Amend'
+import Amend from './amend'
 import { EMPLOYEE } from 'Config/roles'
 
 const Update = ({

@@ -1,9 +1,9 @@
-import Ingredients from 'containers/Ingredients'
-import Outlets from 'containers/Outlets'
-import Users from 'containers/Users'
-import Login from '../containers/Login'
-import Logout from '../containers/Logout'
-import Main from 'containers/Main'
+import Ingredients from 'containers/ingredients'
+import Outlets from 'containers/outlets'
+import Users from 'containers/users'
+import Login from '../containers/login'
+import Logout from '../containers/logout'
+import Main from 'containers/main'
 
 import { ADMIN, MANAGER, EMPLOYEE } from './roles'
 

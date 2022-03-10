@@ -4,7 +4,7 @@ import { compose } from 'redux'
 import WithOutlets from './actions'
 import ReactTable from 'react-table'
 
-import Update from './Update'
+import Update from './update'
 
 import {
   Container,

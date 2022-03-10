@@ -1,6 +1,6 @@
 import { get } from 'lodash'
 import React, { Component } from 'react'
-import PromptModal from 'components/Indicator/Prompt'
+import PromptModal from 'components/indicator/prompt'
 
 import { Get, Put, Post, Delete } from 'utils/axios'
 
