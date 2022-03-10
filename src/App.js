@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import './App.css';
+import './app.css';
 import './index.css';
 import { AuthProvider } from "./context";
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom'
