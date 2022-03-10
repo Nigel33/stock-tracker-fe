@@ -1,5 +1,5 @@
 import React from 'react'
-import Navbar from 'components/navigation.js'
+import Navbar from 'components/navigation'
 import axios from 'axios'
 
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom'
