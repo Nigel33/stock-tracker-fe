@@ -1,22 +1,9 @@
-import Axios from 'axios'
+import Axios from './axiosConfig'
 import getDomainURL from 'utils/api'
-// import { useAuthState } from 'Context'
-
-
 
 export const Get = ( url, response, error, load ) => {
   // const user = useAuthState() 
-  load( true )  
-  // Axios.defaults.headers = {
-  //   common : {
-  //     Authorization: `Bearer ${ "fdffdffffd" }`
-  //   },
-  //   'Access-Control-Allow-Origin': '*'
-  // }
-  // Axios.defaults.headers = {
-  //   'Content-Type': 'application/json',
-  //   'Access-Control-Allow-Origin' : '*',    
-  // }  
+  load( true )      
   return Axios.get( `${ getDomainURL() }${ url }` ).then( res => {
     response( res.data )
     load( false )
@@ -41,10 +28,7 @@ export const Get = ( url, response, error, load ) => {
 }
 
 export const Post = ( url, data, response, error, load ) => {
-  load( true )  
-  Axios.defaults.headers = {
-    'Access-Control-Allow-Origin' : '*',    
-  }
+  load( true )    
   return Axios.post( `${ getDomainURL() }${ url }`, data ).then( res => {
     response( res.data )
     load( false )
@@ -68,9 +52,7 @@ export const Post = ( url, data, response, error, load ) => {
 
 export const Put = ( url, data, response, error, load ) => {
   load( true )  
-  Axios.defaults.headers = {
-    'Access-Control-Allow-Origin' : '*',    
-  }
+  
   return Axios.put( `${ getDomainURL() }${ url }`, data ).then( res => {
     response( res.data )
     load( false )
@@ -94,9 +76,7 @@ export const Put = ( url, data, response, error, load ) => {
 
 export const Delete = ( url, response, error, load ) => {
   load( true )  
-  Axios.defaults.headers = {
-    'Access-Control-Allow-Origin' : '*',    
-  }
+  
   return Axios.delete( `${ getDomainURL() }${ url }` ).then( res => {
     response( res.data )
     load( false )

@@ -1,5 +1,5 @@
-const ROOT_URL = 'http://localhost:3001'; 
- 
+import getDomainURL from 'utils/api'
+
 export async function loginUser(dispatch, loginPayload) {
   const requestOptions = {
     method: 'POST',
@@ -9,7 +9,7 @@ export async function loginUser(dispatch, loginPayload) {
  
   try {
     dispatch({ type: 'REQUEST_LOGIN' });
-    let response = await fetch(`${ROOT_URL}/api/auth/login`, requestOptions);
+    let response = await fetch(`${ getDomainURL() }/api/auth/login`, requestOptions);
     let data = await response.json();    
  
     if (data.user) {      

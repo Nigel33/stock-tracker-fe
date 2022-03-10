@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Navbar from 'components/Navigation.js'
 import axios from 'axios'
 
@@ -10,10 +10,6 @@ import AppRoute from 'components/AppRoutes';
 
 const Home = (props) => {
   const user = useAuthState() 
-  useEffect(() => {
-    console.log('setting defailt')
-    axios.defaults.headers.common['Authorization'] = "apple";
-  }, [])
   
   
   return (    

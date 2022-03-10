@@ -1,5 +1,6 @@
 import Ingredients from 'containers/Ingredients'
 import Outlets from 'containers/Outlets'
+import Users from 'containers/Users'
 import Login from '../containers/Login'
 import Logout from '../containers/Logout'
 import Main from 'containers/Main'
@@ -10,6 +11,11 @@ const routes =[
   {
     path:'/ingredients',
     component: Ingredients,    
+    availableTo: [ ADMIN ]
+  },
+  {
+    path:'/users',
+    component: Users,    
     availableTo: [ ADMIN ]
   },
   {

@@ -31,7 +31,8 @@ const Navigation = ({
                   <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
                       <Nav.Link style={{ color: "white" }} href="ingredients">Ingredients</Nav.Link>
-                      <Nav.Link style={{ color: "white" }} href="outlets">Outlets</Nav.Link>                   
+                      <Nav.Link style={{ color: "white" }} href="outlets">Outlets</Nav.Link>      
+                      <Nav.Link style={{ color: "white" }} href="users">Users</Nav.Link>                  
                     </Nav>
                   </Navbar.Collapse>
                 </>
@@ -50,8 +51,8 @@ const Navigation = ({
               )
             }
             { 
-              user && (
-                <>
+              user.userDetails && (
+                <>                  
                   <div style={{ color: "white" }}>                    
                     { user.userDetails.username } - { user.userDetails.userType }
                   </div>

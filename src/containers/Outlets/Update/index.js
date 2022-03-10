@@ -7,8 +7,10 @@ import {
 import _ from 'lodash'
 import ReactTable from 'react-table'
 import Amend from './Amend'
+import { EMPLOYEE } from 'Config/roles'
 
 const Update = ({
+  userDetails,
   selectedOutlet,
   showUpdateModal,
   onChangeOutletsHOC,
@@ -43,8 +45,9 @@ const Update = ({
                 Header: "Actions",
                 Cell: row => {
                   return (
-                    <>                      
-                       <Button 
+                    <>                                         
+                      <Button 
+                        disabled={ userDetails.userType === EMPLOYEE }
                         variant="primary"
                         onClick={ () => setSelectedField(row.original) }>Amend</Button>                      
                     { 
