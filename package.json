@@ -1,6 +1,9 @@
 {
   "homepage": "https://nigel33.github.io/stock-tracker-fe",
   "name": "test-app",
+  "engines": {
+    "node": "14.15.4"
+  },
   "version": "0.1.0",
   "private": true,
   "dependencies": {
