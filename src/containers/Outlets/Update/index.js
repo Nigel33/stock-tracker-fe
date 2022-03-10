@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import {
   Modal,
   Button,
@@ -16,6 +17,7 @@ const Update = ({
   onChangeOutletsHOC,
   showAmendModal,
   updateIngredientAmount,
+  google,
 }) => {
   const [selectedField, setSelectedField] = useState({});
 
@@ -28,6 +30,21 @@ const Update = ({
           <Modal.Title>View outlet - { selectedOutlet.name } | { selectedOutlet.gps }</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+          <div className="mx-auto "style={{ height: '300px', width: 'auto' }}>
+            <h5>Map</h5>
+            <Map   
+              style={{ height: '300px', width: '500px', margin: '0 auto' }}
+              google={ google }
+              zoom={ 14 }
+              initialCenter={
+                {
+                  lat: selectedOutlet.gps.split(", ")[0],
+                  lng: selectedOutlet.gps.split(", ")[1]
+                }
+            }>
+              <Marker />
+            </Map>
+          </div>          
           <ReactTable 
             data={ selectedOutlet.ingredientOutlets }
             columns={[
@@ -69,4 +86,6 @@ const Update = ({
   )  
 }
 
-export default Update
+export default GoogleApiWrapper({
+  apiKey: "AIzaSyCGA7Nt0YwFgnLp0neu4lXPu-W7CjLjMNE"
+})(Update)
