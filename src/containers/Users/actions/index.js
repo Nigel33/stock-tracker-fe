@@ -1,6 +1,7 @@
 import { get } from 'lodash'
 import React, { Component } from 'react'
 import PromptModal from 'components/indicator/prompt'
+import { toast } from 'react-toastify';
 
 import { Get, Put, Post, Delete } from 'utils/axios'
 
@@ -12,7 +13,7 @@ const HOC = ( WrappedComponent ) => {
       showCreateModal: false,
       newUser: {},
     }
-
+    
     load = param => this.setState({ loading: param })
     
     onChangeUsersHOC = ( key, val ) => this.setState({ [ key ]: val })
@@ -38,8 +39,11 @@ const HOC = ( WrappedComponent ) => {
     createUserSuccess = data => {
       this.getUsers()
       this.setState({ showCreateModal: false })
+      toast.success("Successfully created")
     }
-    createUserError = error => console.log( error )
+    createUserError = error => {      
+      toast.error( error.message )
+    }
       
     render = () => {
       return (

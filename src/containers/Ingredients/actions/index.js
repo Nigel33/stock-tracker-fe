@@ -1,6 +1,7 @@
 import { get } from 'lodash'
 import React, { Component } from 'react'
 import PromptModal from 'components/indicator/prompt'
+import { toast } from 'react-toastify';
 
 import { Get, Put, Post, Delete } from 'utils/axios'
 
@@ -53,9 +54,10 @@ const HOC = ( WrappedComponent ) => {
     createAndAssignIngredientToOutletSuccess = () => {
       this.setState({ showCreateModal: false })
       this.getIngredients()
+      toast.success("Created successfully")
     }
     createAndAssignIngredientToOutletError = error => {
-      console.log(error)
+      toast.error(error.message)
     }
     
     render = () => {

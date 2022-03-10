@@ -1,6 +1,7 @@
 import { get } from 'lodash'
 import React, { Component } from 'react'
 import PromptModal from 'components/indicator/prompt'
+import { toast } from 'react-toastify';
 
 import { Get, Put, Post, Delete } from 'utils/axios'
 
@@ -51,8 +52,9 @@ const HOC = ( WrappedComponent ) => {
     }
     updateIngredientAmountSuccess = payload => {
       this.getIngredientsInOutlet(payload.outlet)
+      toast.success("Updated successfully")
     }
-    updateIngredientAmountError = error => console.log( error )
+    updateIngredientAmountError = error => toast.error( error.message )
 
     render = () => {
       return (
