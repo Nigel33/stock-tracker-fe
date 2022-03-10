@@ -16,7 +16,7 @@ const navigation = ({
           <Container>
             <Navbar.Brand className="text-white" href="#home">Stock Tracker</Navbar.Brand>
             {
-              !user && (
+              !user.userDetails && (
                 <>
                   <Nav className="me-auto">
                     <Nav.Link style={{ color: "white" }} href="login">LOGIN</Nav.Link>
